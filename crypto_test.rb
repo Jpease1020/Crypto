@@ -38,11 +38,23 @@ class EncryptionEngineTest < Minitest::Test
     assert_equal "nO", output
   end
 
+
+  def test_decrpyts_with_a_space
+    engine = EncryptionEngine.new
+    output = engine.encrypt("a B")
+    assert_equal "n O", output
+  end
+
   def test_it_encrypts_using_rot13
-    skip
     engine = EncryptionEngine.new
     output = engine.encrypt("My Message")
     assert_equal "Zl Zrffntr", output
+  end
+
+  def test_it_decrypts_using_rot13
+    engine = EncryptionEngine.new
+    output = engine.decrypt("Zl Zrffntr")
+    assert_equal "My Message", output
   end
 end
 
